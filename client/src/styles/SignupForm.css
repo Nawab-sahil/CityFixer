@@ -1,0 +1,66 @@
+@import './LoginForm.css';
+
+.user-type-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.type-option {
+  cursor: pointer;
+}
+
+.type-option input {
+  display: none;
+}
+
+.type-label {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  padding: 10px;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.type-option input:checked + .type-label {
+  border-color: var(--teal);
+  background: #eafaf7;
+  color: var(--teal-deep);
+}
+
+.type-label .icon {
+  font-size: 1.2rem;
+}
+
+.password-hint {
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+}
+
+.terms-checkbox {
+  display: flex;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+}
+
+.terms-checkbox input {
+  width: 14px;
+  margin-top: 4px;
+}
+
+.terms-checkbox a {
+  color: var(--teal-deep);
+  font-weight: 700;
+}
+
+@media (max-width: 460px) {
+  .user-type-selector {
+    grid-template-columns: 1fr;
+  }
+}
