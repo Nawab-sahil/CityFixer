@@ -1,0 +1,26 @@
+{
+  "name": "cityfixer-server",
+  "version": "1.0.0",
+  "description": "Express backend for CityFixer",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["express", "mongodb", "api"],
+  "author": "Nawab-sahil",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "express-validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

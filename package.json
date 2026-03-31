@@ -1,0 +1,16 @@
+{
+  "name": "cityfixer",
+  "version": "1.0.0",
+  "description": "Local service provider platform like Urban Company",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run server & npm run client",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm run build"
+  },
+  "keywords": ["service", "provider", "local", "urban"],
+  "author": "Nawab-sahil",
+  "license": "ISC"
+}
