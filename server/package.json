@@ -6,7 +6,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node scripts/seedServices.js",
+    "create-admin": "node scripts/createAdmin.js"
   },
   "keywords": ["express", "mongodb", "api"],
   "author": "Nawab-sahil",

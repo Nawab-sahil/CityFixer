@@ -29,7 +29,15 @@ const LoginForm = () => {
     const result = await login(values.email, values.password);
 
     if (result.success) {
-      navigate('/dashboard');
+      // Redirect based on user type
+      const userType = result.data.user.userType;
+      if (userType === 'admin') {
+        navigate('/admin');
+      } else if (userType === 'provider') {
+        navigate('/provider-dashboard');
+      } else {
+        navigate('/dashboard');
+      }
     } else {
       setApiError(result.error || 'Login failed');
     }
