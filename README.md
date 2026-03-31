@@ -49,7 +49,7 @@ JWT_EXPIRE=7d
 Optional frontend API override in `client/.env`:
 
 ```env
-REACT_APP_API_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:5000/api
 ```
 
 ### 3. Run backend
@@ -63,10 +63,10 @@ npm run dev
 
 ```bash
 cd client
-npm start
+npm run dev
 ```
 
-Frontend runs on `http://localhost:3000` and backend on `http://localhost:5000`.
+Frontend runs on `http://localhost:5173` and backend on `http://localhost:5000`.
 
 ## Build
 
@@ -85,7 +85,7 @@ npm run build
 
 - `npm run dev` - starts both server and client
 - `npm run server` - starts backend in dev mode
-- `npm run client` - starts frontend
+- `npm run client` - starts frontend (Vite)
 - `npm run build` - builds frontend production bundle
 
 ## Author
