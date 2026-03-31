@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import '../styles/ProvidersList.css';
@@ -9,15 +9,10 @@ const ProvidersList = () => {
   const { user } = useAuth();
   const [providers, setProviders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedProvider, setSelectedProvider] = useState(null);
 
-  useEffect(() => {
-    fetchProviders();
-  }, [category]);
-
-  const fetchProviders = async () => {
+  const fetchProviders = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/providers/category/${category}`);
+      const response = await fetch(`/api/providers/category/${category}`);
       const data = await response.json();
       if (data.success) {
         setProviders(data.data);
@@ -27,18 +22,18 @@ const ProvidersList = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category]);
 
-  const handleSelectProvider = (provider) => {
+  useEffect(() => {
+    fetchProviders();
+  }, [fetchProviders]);
+
+  const handleBooking = (provider) => {
     if (!user) {
       navigate('/login');
       return;
     }
-    setSelectedProvider(provider);
-  };
-
-  const handleBooking = (provider) => {
-    navigate('/booking', { state: { provider, category } });
+    navigate(`/booking-form/${provider._id}`, { state: { provider, category } });
   };
 
   if (loading) {

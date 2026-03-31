@@ -45,7 +45,7 @@ const Services = () => {
       navigate('/login');
       return;
     }
-    navigate(`/providers/${service._id}`, { state: { service } });
+    navigate(`/providers/${service.category}`, { state: { service } });
   };
 
   if (loading) {
@@ -150,3 +150,5 @@ const Services = () => {
     </div>
   );
 };
+
+export default Services;

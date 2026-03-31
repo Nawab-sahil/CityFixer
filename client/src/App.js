@@ -42,7 +42,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/payment" element={<Payment />} />
-            <Route path="/providers/:serviceId" element={<ProvidersList />} />
+            <Route path="/providers/:category" element={<ProvidersList />} />
             <Route path="/booking-form/:providerId" element={<BookingForm />} />
             <Route path="/provider-register" element={<ProviderRegister />} />
             <Route 

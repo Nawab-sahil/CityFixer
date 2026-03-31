@@ -5,7 +5,7 @@ import '../styles/ProviderRegister.css';
 
 const ProviderRegister = () => {
   const navigate = useNavigate();
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const [formData, setFormData] = useState({
     bio: '',
     location: '',

@@ -51,7 +51,16 @@ app.use(errorMiddleware);
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`✓ Server running on port ${PORT}`);
   console.log(`✓ Environment: ${process.env.NODE_ENV || 'development'}`);
+});
+
+server.on('error', (error) => {
+  if (error.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Stop the running process or set a different PORT in server/.env.`);
+  } else {
+    console.error('Server failed to start:', error.message);
+  }
+  process.exit(1);
 });

@@ -17,21 +17,21 @@ const ProviderDashboard = () => {
       return;
     }
     fetchData();
-  }, [user]);
+  }, [user, navigate]);
 
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
       
       // Fetch profile
-      const profileRes = await fetch('http://localhost:5000/api/providers/profile', {
+      const profileRes = await fetch('/api/providers/profile', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const profileData = await profileRes.json();
       if (profileData.success) setProfile(profileData.data);
 
       // Fetch bookings
-      const bookingsRes = await fetch('http://localhost:5000/api/bookings/provider/list', {
+      const bookingsRes = await fetch('/api/bookings/provider/list', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const bookingsData = await bookingsRes.json();
@@ -46,7 +46,7 @@ const ProviderDashboard = () => {
   const handleAcceptBooking = async (bookingId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}/accept`, {
+      const response = await fetch(`/api/bookings/${bookingId}/accept`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -62,7 +62,7 @@ const ProviderDashboard = () => {
   const handleRejectBooking = async (bookingId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}/reject`, {
+      const response = await fetch(`/api/bookings/${bookingId}/reject`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -76,6 +76,10 @@ const ProviderDashboard = () => {
   };
 
   const filteredBookings = bookings.filter(b => filter === 'all' || b.status === filter);
+
+  if (loading) {
+    return <div className="providers-loading">Loading provider dashboard...</div>;
+  }
 
   return (
     <div className="provider-dashboard">

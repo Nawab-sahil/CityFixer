@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import '../styles/Home.css';
 
 const Home = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
-  const [scrollY, setScrollY] = useState(0);
   const [activeService, setActiveService] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const services = [
     {
@@ -90,38 +83,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Navbar */}
-      <nav className="modern-navbar">
-        <div className="nav-wrapper">
-          <Link to="/" className="nav-logo">
-            <span className="logo-icon">🏢</span>
-            <span className="logo-text">CityFixer</span>
-          </Link>
-
-          <ul className="nav-menu">
-            <li><Link to="/services" className="nav-link">Services</Link></li>
-            <li><Link to="/about" className="nav-link">About</Link></li>
-            <li><Link to="/offers" className="nav-link">Offers</Link></li>
-            <li><Link to="/contact" className="nav-link">Contact</Link></li>
-            {user ? (
-              <>
-                {user.userType === 'admin' && (
-                  <li><Link to="/admin" className="nav-link">Admin Panel</Link></li>
-                )}
-                <li><Link to="/bookings" className="nav-link">Bookings</Link></li>
-                <li><Link to="/profile" className="nav-link">Profile</Link></li>
-                <li><button className="nav-logout" onClick={logout}>Logout</button></li>
-              </>
-            ) : (
-              <>
-                <li><Link to="/login" className="nav-link">Login</Link></li>
-                <li><Link to="/signup" className="nav-btn">Sign Up</Link></li>
-              </>
-            )}
-          </ul>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-background">
@@ -293,34 +254,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="modern-footer">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h4>CityFixer</h4>
-            <p>Your trusted local service platform</p>
-          </div>
-          <div className="footer-section">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h4>Follow Us</h4>
-            <div className="social-links">
-              <a href="#">Facebook</a>
-              <a href="#">Twitter</a>
-              <a href="#">Instagram</a>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2024 CityFixer. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 };

@@ -130,10 +130,10 @@ const Contact = () => {
             <div className="social-links">
               <h3>Follow Us</h3>
               <div className="social-icons">
-                <a href="#" className="social-icon">📱 Facebook</a>
-                <a href="#" className="social-icon">𝕏 Twitter</a>
-                <a href="#" className="social-icon">📸 Instagram</a>
-                <a href="#" className="social-icon">▶️ YouTube</a>
+                <a href="https://facebook.com" className="social-icon" target="_blank" rel="noreferrer">📱 Facebook</a>
+                <a href="https://x.com" className="social-icon" target="_blank" rel="noreferrer">𝕏 Twitter</a>
+                <a href="https://instagram.com" className="social-icon" target="_blank" rel="noreferrer">📸 Instagram</a>
+                <a href="https://youtube.com" className="social-icon" target="_blank" rel="noreferrer">▶️ YouTube</a>
               </div>
             </div>
           </div>

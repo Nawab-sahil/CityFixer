@@ -12,10 +12,10 @@ const Footer = () => {
             <h3>CityFixer</h3>
             <p>Your trusted partner for local services</p>
             <div className="social-links">
-              <a href="#" className="social-icon">f</a>
-              <a href="#" className="social-icon">t</a>
-              <a href="#" className="social-icon">in</a>
-              <a href="#" className="social-icon">ig</a>
+              <a href="https://facebook.com" className="social-icon" target="_blank" rel="noreferrer">f</a>
+              <a href="https://x.com" className="social-icon" target="_blank" rel="noreferrer">t</a>
+              <a href="https://linkedin.com" className="social-icon" target="_blank" rel="noreferrer">in</a>
+              <a href="https://instagram.com" className="social-icon" target="_blank" rel="noreferrer">ig</a>
             </div>
           </div>
 
@@ -36,8 +36,8 @@ const Footer = () => {
             <ul>
               <li><Link to="/services">Browse Services</Link></li>
               <li><Link to="/bookings">My Bookings</Link></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">Support</a></li>
+              <li><Link to="/contact">FAQs</Link></li>
+              <li><Link to="/contact">Support</Link></li>
             </ul>
           </div>
 
@@ -45,10 +45,10 @@ const Footer = () => {
           <div className="footer-section">
             <h4>For Providers</h4>
             <ul>
-              <li><a href="#">Become a Provider</a></li>
-              <li><a href="#">Partner with us</a></li>
-              <li><a href="#">Provider Guide</a></li>
-              <li><a href="#">Earnings</a></li>
+              <li><Link to="/provider-register">Become a Provider</Link></li>
+              <li><Link to="/provider-register">Partner with us</Link></li>
+              <li><Link to="/provider-register">Provider Guide</Link></li>
+              <li><Link to="/provider-dashboard">Earnings</Link></li>
             </ul>
           </div>
 
@@ -72,11 +72,11 @@ const Footer = () => {
             <p>&copy; 2026 CityFixer. All rights reserved.</p>
           </div>
           <div className="footer-right">
-            <Link to="#">Privacy Policy</Link>
+            <Link to="/contact">Privacy Policy</Link>
             <span>•</span>
-            <Link to="#">Terms of Service</Link>
+            <Link to="/contact">Terms of Service</Link>
             <span>•</span>
-            <Link to="#">Cookie Policy</Link>
+            <Link to="/contact">Cookie Policy</Link>
           </div>
         </div>
       </div>

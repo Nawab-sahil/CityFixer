@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useForm } from '../hooks/useForm';
-import { loginFormValidation } from '../utils/validation';
 import '../styles/LoginForm.css';
 
 const LoginForm = () => {

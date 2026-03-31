@@ -1,5 +1,5 @@
 // Email validation regex
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const EMAIL_REGEX = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 export const validateEmail = (email) => {
   if (!email) return 'Email is required';

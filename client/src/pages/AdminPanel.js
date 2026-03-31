@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import '../styles/AdminPanel.css';
@@ -11,24 +11,16 @@ const AdminPanel = () => {
   const [providers, setProviders] = useState([]);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
-  const initialized = useRef(false);
 
-  useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-      fetchAllData();
-    }
-  }, []);
-
-  const fetchAllData = async () => {
+  const fetchAllData = useCallback(async () => {
     setLoading(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
       
       const [servicesRes, providersRes, bookingsRes] = await Promise.all([
         fetch('/api/services', { headers }),
-        fetch('/api/providers', { headers }),
-        fetch('/api/bookings', { headers })
+        fetch('/api/providers/all', { headers }),
+        fetch('/api/bookings/all', { headers })
       ]);
 
       if (servicesRes.ok) {
@@ -48,12 +40,18 @@ const AdminPanel = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    if (token) {
+      fetchAllData();
+    }
+  }, [fetchAllData, token]);
 
   const handleVerifyProvider = async (providerId) => {
     try {
       const res = await fetch(`/api/providers/${providerId}/verify`, {
-        method: 'POST',
+        method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -68,7 +66,7 @@ const AdminPanel = () => {
   const handleRejectProvider = async (providerId) => {
     try {
       const res = await fetch(`/api/providers/${providerId}/reject`, {
-        method: 'POST',
+        method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
